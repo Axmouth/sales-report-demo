@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+    padding: 20px;
+}
+
+.main-component-container {
+    position: relative;
+    padding: 5px;
+}
+
+.sales-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sales-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.mat-flat-button {
+    margin: 5px;
+}
+
+.sales-full-width {
+    width: 100%;
+}
+
+.sales-full-width:nth-last-child(0) {
+    margin-bottom: 10px;
+}
+
+.button-row {
+    margin: 10px 0;
+}

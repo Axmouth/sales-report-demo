@@ -1,0 +1,33 @@
+.sales-table-container {
+    position: relative;
+    max-height: 400px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+}
+
+.sales-rate-limit-reached {
+    color: #980000;
+    max-width: 360px;
+    text-align: center;
+}
+
+.mat-column-number,
+.mat-column-state {
+    max-width: 64px;
+}
+
+.mat-column-created {
+    max-width: 124px;
+}
+
+.top-charts {
+    margin: 20px;
+    padding: 20px;
+}
+
+.example-margin {
+    margin: 0 10px;
+  }
