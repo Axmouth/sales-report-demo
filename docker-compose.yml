@@ -1,0 +1,19 @@
+version: "3"
+services:
+    sales:
+        depends_on:
+        - mongo
+        image: axmouth/sales-report-demo:latest
+        container_name: sales-report-demo
+        ports:
+        - "3100:3100"
+        - "4000:4000"
+        environment:
+        - MONGODOCKER_URI=mongodb://mongo:27017/sales-report-demo?ssl=true
+        links:
+        - mongo
+    mongo:
+        container_name: mongo
+        image: mongo:4
+        ports:
+        - "27017:27017"
