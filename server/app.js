@@ -13,13 +13,11 @@ mongoose.connect(process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
   process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
   process.env.MONGODOCKER_URI ||
-  'mongodb://mongo/sales-report-demo?ssl=true', {
+  'mongodb://mongo/sales-report-demo', {
     promiseLibrary: require('bluebird'),
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    ssl: false,
-    server: {ssl: false},
 }).then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 

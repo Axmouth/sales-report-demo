@@ -1,7 +1,7 @@
 {
     "apps" : [{
       "name"        : "sales-report-demo",
-      "script"      : "server/app.js",
+      "script"      : "server/bin/www",
       "args"        : [],
       "log_date_format" : "YYYY-MM-DD HH:mm Z",
       "watch"       : false,
