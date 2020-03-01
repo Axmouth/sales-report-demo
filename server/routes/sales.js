@@ -8,7 +8,7 @@ var Sales = require('../models/Sales.js');
 server.listen(4000);
 
 // socket io
-io.on('connection', function (socket) {
+io.on('connection', async (socket) => {
     socket.on('newdata', function (data) {
         io.emit('new-data', { data: data });
     });
@@ -18,16 +18,14 @@ io.on('connection', function (socket) {
 });
 
 // list data
-router.get('/', function(req, res) {
-    Sales.find(function (err, sales) {
-        if (err) return next(err);
-        res.json(sales);
-    });
+router.get('/', async (req, res) => {
+    const sales = await Sales.find().catch(err => next(err));
+    return res.json(sales);
 });
 
 // item sales report
-router.get('/itemsales',  function(req, res, next) {
-    Sales.aggregate([
+router.get('/itemsales',  async (req, res, next) => {
+    const sales = await Sales.aggregate([
         {
             $group: { 
                 _id: { itemId: '$itemId', itemName: '$itemName' }, 
@@ -37,48 +35,38 @@ router.get('/itemsales',  function(req, res, next) {
             }
         },
         { $sort: {totalPrice: 1} }
-    ], function (err, sales) {
-        if (err) return next(err);
-        res.json(sales);
-    });
+    ]).catch(err => next(err))
+    return res.json(sales);
 });
 
 // get data by id
-router.get('/:id', function(req, res, next) {
-    Sales.findById(req.params.id, function (err, sales) {
-        if (err) return next(err);
-        res.json(sales);
-    });
+router.get('/:id', async (req, res, next) => {
+    const sale = await Sales.findById(req.params.id).catch(err => next(err));
+    return res.json(sale);
 });
   
 // post data
-router.post('/', function(req, res, next) {
-    Sales.create(req.body, function (err, sales) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        }
-        res.json(sales);
-    });
+router.post('/', async (req, res, next) => {
+    const sale = await Sales.create(req.body).catch(err => {
+        console.log(err);
+        return next(err);
+    })
+    return res.json(sale);
 });
   
 // put data
-router.put('/:id', function(req, res, next) {
-    Sales.findByIdAndUpdate(req.params.id, req.body, function (err, sales) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        }
-        res.json(sales);
+router.put('/:id', async (req, res, next) => {
+    const sales = await Sales.findByIdAndUpdate(req.params.id, req.body).catch(err => {
+        console.log(err);
+        return next(err);
     });
+    res.json(sales);
 });
   
 // delete data by id
-router.delete('/:id', function(req, res, next) {
-    Sales.findByIdAndRemove(req.params.id, req.body, function (err, sales) {
-        if (err) return next(err);
-        res.json(sales);
-    });
+router.delete('/:id', async (req, res, next) => {
+    const sale = await Sales.findByIdAndRemove(req.params.id, req.body).catch(err => next(err));
+    return res.json(sale);
 });
 
 module.exports = router;
