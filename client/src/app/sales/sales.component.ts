@@ -17,7 +17,6 @@ export class SalesComponent implements OnInit {
 
   chartTypes: ChartType[] = ['pie', 'line', 'bar', 'horizontalBar', 'radar', 'doughnut', 'polarArea'];
   chartType: ChartType = this.chartTypes[0];
-  selected = 'option1';
 
   socket = io(environment.socketIoRoot);
 
