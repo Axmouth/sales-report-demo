@@ -8,7 +8,7 @@ var Sales = require('../models/Sales.js');
 server.listen(4000);
 
 // socket io
-io.on('connection', async (socket) => {
+io.on('connection', (socket) => {
     socket.on('newdata', function (data) {
         io.emit('new-data', { data: data });
     });

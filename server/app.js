@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
   process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
   process.env.MONGODOCKER_URI ||
-  'mongodb://mongo/sales-report-demo', {
+  'mongodb://localhost:27017/sales-report-demo', {
     promiseLibrary: require('bluebird'),
     useNewUrlParser: true,
     useUnifiedTopology: true,

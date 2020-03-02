@@ -1,8 +1,0 @@
-// MongoDB connection options
-mongo: {
-    uri:    process.env.MONGOLAB_URI ||
-            process.env.MONGOHQ_URL ||
-            process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
-            process.env.MONGODOCKER_URI ||
-            'mongodb://localhost/sales-report-demo'
-  }
