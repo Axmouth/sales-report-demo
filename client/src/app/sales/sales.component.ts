@@ -6,7 +6,7 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { ApiService } from '../api.service';
 import { Sales } from '../sales';
 import { Chart } from '../chart';
-import { socketIoRoot } from '../app-constants';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sales',
@@ -19,7 +19,7 @@ export class SalesComponent implements OnInit {
   chartType: ChartType = this.chartTypes[0];
   selected = 'option1';
 
-  socket = io(socketIoRoot);
+  socket = io(environment.socketIoRoot);
 
   chartData: Chart[] = [];
 

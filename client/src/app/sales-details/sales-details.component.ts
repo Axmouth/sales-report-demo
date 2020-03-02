@@ -3,7 +3,7 @@ import * as io from 'socket.io-client';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { Sales } from './../sales';
-import { socketIoRoot } from '../app-constants';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sales-details',
@@ -12,7 +12,7 @@ import { socketIoRoot } from '../app-constants';
 })
 export class SalesDetailsComponent implements OnInit {
 
-  socket = io(socketIoRoot);
+  socket = io(environment.socketIoRoot);
 
   sales: Sales = { _id: '', itemId: '', itemName: '', itemPrice: null, itemQty: null, totalPrice: null, updated: null };
   isLoadingResults = true;

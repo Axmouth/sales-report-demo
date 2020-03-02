@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { socketIoRoot } from '../app-constants';
+import { environment } from 'src/environments/environment';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -21,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AddSalesComponent implements OnInit {
 
-  socket = io(socketIoRoot);
+  socket = io(environment.socketIoRoot);
 
   salesForm: FormGroup;
   itemId = '';

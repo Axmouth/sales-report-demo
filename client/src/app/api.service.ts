@@ -4,12 +4,12 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, tap, map } from 'rxjs/operators';
 import { Sales } from './sales';
 import { Chart } from './chart';
-import { apiRoot } from './app-constants';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = apiRoot;
+const apiUrl = environment.apiRoot;
 
 @Injectable({
   providedIn: 'root'
