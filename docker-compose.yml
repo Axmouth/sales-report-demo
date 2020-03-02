@@ -1,6 +1,9 @@
 version: "3"
 services:
     sales-server:
+        networks:
+            - default
+        restart: always 
         image: axmouth/sales-report-demo-server:latest
         container_name: sales-report-demo-server
         ports:
@@ -12,6 +15,7 @@ services:
             restart_policy:
                 condition: any 
     sales-client:
+        restart: always 
         image: axmouth/sales-report-demo-client:latest
         container_name: sales-report-demo-client
         ports:
