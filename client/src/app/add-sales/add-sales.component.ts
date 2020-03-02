@@ -50,7 +50,6 @@ export class AddSalesComponent implements OnInit {
       .subscribe((res: any) => {
           const id = res._id;
           this.isLoadingResults = false;
-          this.socket.emit('updatedata', res);
           this.router.navigate(['/sales-details', id]);
         }, (err: any) => {
           console.log(err);

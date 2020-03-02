@@ -45,6 +45,12 @@ export class EditSalesComponent implements OnInit {
       itemQty : [null, Validators.required],
       totalPrice : [null, Validators.required]
     });
+
+    this.socket.on('update-data', function(data: any) {
+      if (data.data._id === this.route.snapshot.params.id) {
+        this.sales = data.data;
+      }
+    }.bind(this));
   }
 
   getSalesById(id: any) {
@@ -66,7 +72,6 @@ export class EditSalesComponent implements OnInit {
       .subscribe((res: any) => {
           const id = res._id;
           this.isLoadingResults = false;
-          this.socket.emit('updatedata', res);
           this.router.navigate(['/sales-details', id]);
         }, (err: any) => {
           console.log(err);

@@ -23,7 +23,9 @@ export class SalesDetailsComponent implements OnInit {
     this.getSalesDetails(this.route.snapshot.params.id);
 
     this.socket.on('update-data', function(data: any) {
-      this.getSalesDetails();
+      if (data.data._id === this.route.snapshot.params.id) {
+        this.sales = data.data;
+      }
     }.bind(this));
   }
 
@@ -42,7 +44,6 @@ export class SalesDetailsComponent implements OnInit {
       .subscribe(res => {
           this.isLoadingResults = false;
           this.router.navigate(['/']);
-          this.socket.emit('updatedata', res);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;

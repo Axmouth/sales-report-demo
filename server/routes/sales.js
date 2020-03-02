@@ -9,12 +9,7 @@ server.listen(4000);
 
 // socket io
 io.on('connection', (socket) => {
-    socket.on('newdata', function (data) {
-        io.emit('new-data', { data: data });
-    });
-    socket.on('updatedata', function (data) {
-      io.emit('update-data', { data: data });
-    });
+    //
 });
 
 // list data
@@ -51,21 +46,27 @@ router.post('/', async (req, res, next) => {
         console.log(err);
         return next(err);
     })
+    console.log(sale);
+    io.emit('update-data', { data: sale });
     return res.json(sale);
 });
   
 // put data
 router.put('/:id', async (req, res, next) => {
-    const sales = await Sales.findByIdAndUpdate(req.params.id, req.body).catch(err => {
+    const sale = await Sales.findByIdAndUpdate(req.params.id, req.body).catch(err => {
         console.log(err);
         return next(err);
     });
-    res.json(sales);
+    const data = req.body;
+    data._id = req.params.id;
+    io.emit('update-data', { data: data });
+    res.json(sale);
 });
   
 // delete data by id
 router.delete('/:id', async (req, res, next) => {
     const sale = await Sales.findByIdAndRemove(req.params.id, req.body).catch(err => next(err));
+    io.emit('update-data', { data: sale });
     return res.json(sale);
 });
 
