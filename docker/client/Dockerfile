@@ -14,4 +14,4 @@ WORKDIR /usr/src/app
 
 FROM nginx:1.17.1-alpine
 COPY --from=build /usr/src/app/client/dist/client /usr/share/nginx/html
-COPY --from=build /client/nginx.conf /etc/nginx/conf.d/default
+COPY --from=build /usr/src/app/client/nginx-custom.conf /etc/nginx/conf.d/default
