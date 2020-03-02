@@ -1,8 +1,7 @@
 version: "3"
 services:
     sales-server:
-        networks:
-            - default
+        network_mode: host
         restart: always 
         image: axmouth/sales-report-demo-server:latest
         container_name: sales-report-demo-server
