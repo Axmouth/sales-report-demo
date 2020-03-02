@@ -10,7 +10,7 @@ services:
         - "3100:3100"
         - "4000:4000"
         environment:
-        - MONGODOCKER_URI=mongodb://host.docker.internal:27017/sales-report-demo
+        - MONGODOCKER_URI=mongodb://localhost:27017/sales-report-demo
         deploy:
             restart_policy:
                 condition: any 
