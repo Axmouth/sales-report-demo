@@ -8,8 +8,14 @@ services:
         - "4000:4000"
         environment:
         - MONGODOCKER_URI=mongodb://host.docker.internal:27017/sales-report-demo
+        deploy:
+            restart_policy:
+                condition: any 
     sales-client:
         image: axmouth/sales-report-demo-client:latest
         container_name: sales-report-demo-client
         ports:
             - "4201:80"
+        deploy:
+            restart_policy:
+                condition: any 
