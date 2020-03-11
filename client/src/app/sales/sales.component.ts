@@ -43,8 +43,10 @@ export class SalesComponent implements OnInit {
     socket = io(environment.socketIoRoot);
 
     // chartData: Chart[] = [];
-    chartData$: Observable < number[] > ;
-    data$: Observable < Sales[] > ;
+    chartData$: Observable<number[]>;
+    data$: Observable<Sales[]>;
+
+    chartContainerHeight = 450;
 
     public chartOptions: ChartOptions = {
         responsive: true,
@@ -90,7 +92,6 @@ export class SalesComponent implements OnInit {
     getChartData() {
       this.chartData$ = this.api.getChart().pipe(
           map(chArray => {
-              console.log('newAr');
               let idx = 0;
               const backgrounds = [];
               this.chartLabels = [];
@@ -99,14 +100,13 @@ export class SalesComponent implements OnInit {
                   this.chartLabels.push(ch._id.itemName);
                   this.shownChartData.push(ch.totalPrice);
                   // tslint:disable-next-line:max-line-length
-                  backgrounds.push(`rgba(${0 + (idx * 75 + 50) % 255}, ${255 - (idx * 50 + 20) % 255}, ${0 + (idx * 100 + 150) % 255}, 0.6)`);
+                  backgrounds.push(`rgba(${0 + (idx * 75 + 50 + ch.totalPrice) % 255}, ${255 - (idx * 50 + 20 + ch.totalPrice) % 255}, ${0 + (idx * 100 + 150 + ch.totalPrice) % 255}, 0.6)`);
                   idx++;
                   return ch.totalPrice;
               });
               this.chartColors = [{
                 backgroundColor: backgrounds
               }];
-              console.log(newAr);
               return newAr;
           }));
     }
