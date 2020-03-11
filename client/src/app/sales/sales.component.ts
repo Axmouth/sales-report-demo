@@ -48,6 +48,7 @@ export class SalesComponent implements OnInit {
 
     public chartOptions: ChartOptions = {
         responsive: true,
+        maintainAspectRatio: false,
         legend: {
             position: 'top',
         },
