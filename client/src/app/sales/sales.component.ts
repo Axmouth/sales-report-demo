@@ -98,7 +98,7 @@ export class SalesComponent implements OnInit {
                   this.chartLabels.push(ch._id.itemName);
                   this.shownChartData.push(ch.totalPrice);
                   // tslint:disable-next-line:max-line-length
-                  backgrounds.push(`rgba(${0 + (idx * 75 + 50) % 255}, ${255 - (idx * 50 + 20) % 255}, ${0 + (idx * 100 + 150) % 255}, 0.99)`);
+                  backgrounds.push(`rgba(${0 + (idx * 75 + 50) % 255}, ${255 - (idx * 50 + 20) % 255}, ${0 + (idx * 100 + 150) % 255}, 0.6)`);
                   idx++;
                   return ch.totalPrice;
               });
