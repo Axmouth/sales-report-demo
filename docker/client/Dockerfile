@@ -1,4 +1,4 @@
-FROM node:13 AS build
+FROM node:12 AS build
  
 # Define working directory
 RUN mkdir -p /usr/src/app
