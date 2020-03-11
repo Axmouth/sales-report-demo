@@ -49,6 +49,13 @@ export class EditSalesComponent implements OnInit {
     this.socket.on('update-data', function(data: any) {
       if (data.data._id === this.route.snapshot.params.id) {
         this.sales = data.data;
+        this.salesForm.setValue({
+          itemId: data.data.itemId,
+          itemName: data.data.itemName,
+          itemPrice: data.data.itemPrice,
+          itemQty: data.data.itemQty,
+          totalPrice: data.data.totalPrice
+        });
       }
     }.bind(this));
   }

@@ -64,11 +64,11 @@ export class ApiService {
     );
   }
 
-  getChart(): Observable<Chart> {
+  getChart(): Observable<Chart[]> {
     const url = `${apiUrl}/itemsales`;
-    return this.http.get<Chart>(url).pipe(
+    return this.http.get<Chart[]>(url).pipe(
       tap(_ => console.log(`fetched chart data`)),
-      catchError(this.handleError<Chart>(`getChart data`))
+      catchError(this.handleError<Chart[]>(`getChart data`))
     );
   }
 
