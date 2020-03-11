@@ -97,7 +97,8 @@ export class SalesComponent implements OnInit {
               const newAr = chArray.map(ch => {
                   this.chartLabels.push(ch._id.itemName);
                   this.shownChartData.push(ch.totalPrice);
-                  backgrounds.push(`rgba(${0 + (idx * 10)}, ${255 - (idx * 20)}, ${0 + (idx * 10)}, 0.3)`);
+                  // tslint:disable-next-line:max-line-length
+                  backgrounds.push(`rgba(${0 + (idx * 75 + 50) % 255}, ${255 - (idx * 50 + 20) % 255}, ${0 + (idx * 100 + 150) % 255}, 0.3)`);
                   idx++;
                   return ch.totalPrice;
               });
