@@ -100,7 +100,7 @@ export class SalesComponent implements OnInit {
               const newAr = chArray.map(ch => {
                   this.chartLabels.push(ch._id.itemName);
                   this.shownChartData.push(ch.totalPrice);
-                  backgrounds.push(`hsl(${(priceSum + idx * 70) % 360 }, 100%, 75%)`);
+                  backgrounds.push(`hsl(${(priceSum + idx * 70) % 360 }, 100%, 75%)`); // Laura ™
                   idx++;
                   return ch.totalPrice;
               });
