@@ -96,11 +96,11 @@ export class SalesComponent implements OnInit {
               const backgrounds = [];
               this.chartLabels = [];
               this.shownChartData = [];
+              const priceSum = chArray.reduce((a, b) => a + b.totalPrice, 0);
               const newAr = chArray.map(ch => {
                   this.chartLabels.push(ch._id.itemName);
                   this.shownChartData.push(ch.totalPrice);
-                  // tslint:disable-next-line:max-line-length
-                  backgrounds.push(`rgba(${0 + (idx * 75 + 50 + ch.totalPrice) % 255}, ${255 - (idx * 50 + 20 + ch.totalPrice) % 255}, ${0 + (idx * 100 + 150 + ch.totalPrice) % 255}, 0.6)`);
+                  backgrounds.push(`hsl(${(priceSum + idx * 70) % 360 }, 100%, 75%)`);
                   idx++;
                   return ch.totalPrice;
               });
